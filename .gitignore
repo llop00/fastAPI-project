@@ -1,0 +1,19 @@
+# Ignore environment variables file
+.env
+
+# Ignore Python cache files
+__pycache__/
+*.py[cod]
+
+# Ignore virtual environment directory
+venv/
+env/
+
+# Ignore compiled files
+*.pyc
+
+# Ignore logs
+logs/
+*.log
+
+# Ignore other sensitive files or directories
