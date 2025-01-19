@@ -9,3 +9,4 @@ PyJWT
 jwt
 pyjwt
 openai==0.28.0
+scrapy

@@ -8,6 +8,7 @@ from PIL import Image
 from app.api import freepik, instagram, imgbb, auth, calculator, email
 from app.api.freepik import generate_image_from_prompt
 from app.api.imgbb import upload_image_to_imgbb
+from app.api.scraper import router as scraper_router
 from app.api.instagram import post_image_to_instagram
 from app.utils.email_utils import send_email
 
@@ -41,6 +42,8 @@ app.include_router(imgbb.router)
 app.include_router(auth.router)
 app.include_router(calculator.router)
 app.include_router(email.router)
+app.include_router(scraper_router)
+
 logger.debug("Routers registrados: instagram, freepik, imgbb, auth, calculator, email")
 
 # Modelo Pydantic
