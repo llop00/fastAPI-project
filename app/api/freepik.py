@@ -24,10 +24,9 @@ def generate_image_from_prompt(data: PromptRequest):
     payload = {
         "prompt": prompt,
         "styling": {
-            "style": "photo",
+            "style": "digital-art",
             "color": "vibrant",
             "lightning": "studio",
-            "framing": "aerial-view"
         },
         "image": {"size": "square_1_1"}
     }

@@ -1,175 +1,147 @@
-# FastAPI Multi-Service Backend
+# FastAPI Project
 
-[![FastAPI](https://img.shields.io/badge/FastAPI-0.95.0-009688.svg)](https://fastapi.tiangolo.com/)
-[![Python](https://img.shields.io/badge/Python-3.9-3776AB.svg)](https://www.python.org/)
-[![Docker](https://img.shields.io/badge/Docker-20.10.0-2496ED.svg)](https://www.docker.com/)
-[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+## Descripción
 
-A comprehensive backend service built with FastAPI, showcasing various API integrations, authentication, and modern backend development practices. This project serves as a demonstration of building scalable and maintainable microservices.
+Este proyecto es un backend desarrollado con **FastAPI** para gestionar múltiples servicios, como la generación de imágenes mediante Freepik, publicación en Instagram, subida de imágenes a ImgBB y envío de correos electrónicos. Está diseñado para ser modular y fácilmente extensible.
 
-## Table of Contents
+---
 
-- [Features](#features)
-- [Services](#services)
-- [Technologies Used](#technologies-used)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Environment Variables](#environment-variables)
-- [Usage](#usage)
-  - [Running with Docker](#running-with-docker)
-  - [Running Locally](#running-locally)
-  - [API Documentation](#api-documentation)
-- [Project Structure](#project-structure)
+## Tabla de Contenidos
+
+- [Requisitos](#requisitos)
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Ejecución](#ejecución)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Servicios Principales](#servicios-principales)
 - [API Endpoints](#api-endpoints)
-- [Contributing](#contributing)
-- [License](#license)
 
-## Features
+---
 
-- **FastAPI Framework**: High-performance async API development
-- **Docker Integration**: Containerized deployment
-- **Authentication**: JWT-based authentication system
-- **Multiple Services**: Instagram posting, image generation, calculator
-- **Email Integration**: Automated email notifications
-- **External API Integration**: Freepik, ImgBB, Instagram
-- **Comprehensive Logging**: Detailed system logging
-- **Environment Management**: Secure configuration handling
+## Requisitos
 
-## Services
+- **Python 3.9 o superior**
+- **Docker y Docker Compose** (para ejecutar con contenedores)
+- **Cuenta y claves API** para los servicios:
+  - Freepik
+  - ImgBB
+  - OpenAI
+  - Instagram
+  - Correo SMTP
 
-- **Authentication Service**: JWT-based user authentication
-- **Calculator API**: Mathematical operations endpoint
-- **Image Generation**: AI-powered image generation using Freepik
-- **Instagram Integration**: Automated Instagram posting
-- **Image Hosting**: ImgBB integration for image storage
-- **Email Service**: Automated email notifications
+---
 
-## Technologies Used
+## Instalación
 
-- **[FastAPI](https://fastapi.tiangolo.com/)**: Modern Python web framework
-- **[Python 3.9](https://www.python.org/)**: Programming language
-- **[Docker](https://www.docker.com/)**: Containerization
-- **[Uvicorn](https://www.uvicorn.org/)**: ASGI web server
-- **[PyJWT](https://pyjwt.readthedocs.io/)**: JWT authentication
-- **[Requests](https://requests.readthedocs.io/)**: HTTP library
-- **[Python-multipart](https://github.com/andrew-d/python-multipart)**: Form data parsing
-- **[Python-dotenv](https://github.com/theskumar/python-dotenv)**: Environment management
-
-## Getting Started
-
-### Prerequisites
-
-- Python 3.9 or higher
-- Docker and Docker Compose
-- Git
-
-### Installation
-
-1. **Clone the repository**
+1. Clona este repositorio:
 
    ```bash
-   git clone https://github.com/your-username/fastapi-project.git
-   cd fastapi-project
+   git clone <tu-repositorio>
+   cd <nombre-del-directorio>
    ```
 
-2. **Create and activate virtual environment**
-
-   ```bash
-   python -m venv venv
-   source venv/bin/activate  # On Windows: venv\\Scripts\\activate
-   ```
-
-3. **Install dependencies**
+2. Instala las dependencias:
 
    ```bash
    pip install -r requirements.txt
    ```
 
-### Environment Variables
-
-Create a `.env` file in the root directory:
-
-```env
-FREEPIK_API_KEY=your_freepik_key
-INSTA_USER_ID=your_instagram_user_id
-INSTA_ACCESS_TOKEN=your_instagram_access_token
-IMGBB_API_KEY=your_imgbb_key
-JWT_SECRET_KEY=your_jwt_secret
-SMTP_SERVER=your_smtp_server
-SMTP_PORT=587
-SMTP_USERNAME=your_email
-SMTP_PASSWORD=your_password
-```
-
-## Usage
-
-### Running with Docker
-
-```bash
-docker-compose up --build
-```
-
-### Running Locally
-
-```bash
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
-```
-
-### API Documentation
-
-Once running, access the API documentation at:
-- Swagger UI: `http://localhost:8000/docs`
-- ReDoc: `http://localhost:8000/redoc`
-
-## Project Structure
-
-```
-fastapi-project/
-├── app/
-│   ├── api/
-│   │   ├── auth.py
-│   │   ├── calculator.py
-│   │   ├── freepik.py
-│   │   ├── image_generator.py
-│   │   ├── imgbb.py
-│   │   └── instagram.py
-│   ├── core/
-│   │   └── config.py
-│   └── utils/
-│       └── email_utils.py
-├── docker-compose.yml
-├── Dockerfile
-├── requirements.txt
-└── .env
-```
-
-## API Endpoints
-
-- **Authentication**
-  - `POST /auth/google`: Google authentication
-  
-- **Calculator**
-  - `POST /calculator/calculate`: Perform calculations
-  - `GET /calculator/operations`: List available operations
-
-- **Image Services**
-  - `POST /freepik/generate_image`: Generate images
-  - `POST /imgbb/upload`: Upload images
-  - `POST /instagram/upload_image`: Post to Instagram
-
-## Contributing
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+3. Configura las variables de entorno creando un archivo `.env` en la raíz del proyecto. Consulta la sección [Configuración](#configuración).
 
 ---
 
-Made with ❤️ using FastAPI and Python
+## Configuración
+
+Ejemplo del archivo `.env`:
+
+```env
+FREEPIK_API_KEY=tu_clave_de_freepik
+IMGBB_API_KEY=tu_clave_de_imgbb
+OPENAI_API_KEY=tu_clave_de_openai
+EMAIL_USER=tu_correo
+EMAIL_PASS=tu_password
+SMTP_SERVER=smtp.gmail.com
+SMTP_PORT=587
+INSTA_USER_ID=tu_instagram_user_id
+INSTA_ACCESS_TOKEN=tu_instagram_access_token
+GPT_MODEL=gpt-4
+```
+
+**Nota:** Asegúrate de usar valores reales para las claves API y credenciales.
+
+---
+
+## Ejecución
+
+### Usando Docker Compose
+
+1. Construye y ejecuta el contenedor:
+
+   ```bash
+   docker-compose up --build
+   ```
+
+2. La aplicación estará disponible en `http://localhost:8000`.
+
+### Ejecución Local
+
+1. Inicia el servidor con Uvicorn:
+
+   ```bash
+   uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+   ```
+
+2. Accede a la documentación interactiva de la API:
+   - Swagger UI: [http://localhost:8000/docs](http://localhost:8000/docs)
+   - Redoc: [http://localhost:8000/redoc](http://localhost:8000/redoc)
+
+---
+
+## Estructura del Proyecto
+
+```
+├── app/
+│   ├── api/
+│   │   ├── freepik.py          # Gestión de imágenes con Freepik
+│   │   ├── imgbb.py            # Subida de imágenes a ImgBB
+│   │   ├── email.py            # Envío de correos electrónicos
+│   │   ├── instagram.py        # Publicación en Instagram
+│   │   ├── auth.py             # Servicios de autenticación
+│   │   ├── calculator.py       # API de calculadora
+│   ├── utils/
+│   │   └── email_utils.py      # Funciones de utilidades para correos
+│   ├── main.py                 # Archivo principal del backend
+├── Dockerfile                  # Archivo para construir la imagen Docker
+├── docker-compose.yml          # Configuración de Docker Compose
+├── requirements.txt            # Dependencias del proyecto
+├── .env                        # Variables de entorno (no compartas este archivo públicamente)
+```
+
+---
+
+## Servicios Principales
+
+1. **Generación de imágenes (Freepik):** Genera imágenes basadas en texto utilizando la API de Freepik.
+2. **Subida de imágenes (ImgBB):** Almacena imágenes y obtiene URLs públicas.
+3. **Publicación en Instagram:** Publica imágenes en cuentas de Instagram mediante su API oficial.
+4. **Envío de correos electrónicos:** Envía correos electrónicos automatizados con SMTP.
+
+---
+
+## API Endpoints
+
+### Endpoints de Imagen
+- `POST /freepik/generate_image`: Genera imágenes con Freepik.
+- `POST /imgbb/upload`: Sube imágenes a ImgBB.
+- `POST /instagram/upload_image`: Publica imágenes en Instagram.
+
+### Endpoints de Correo
+- `POST /send-structured-email`: Genera y envía correos electrónicos dinámicos.
+
+### Otros Endpoints
+- `POST /generate_and_post`: Genera una imagen y la publica en Instagram.
+- `POST /upload_and_post_image`: Sube una imagen y la publica en Instagram.
+
+---
+
+Con este README, cualquier persona debería poder configurar y ejecutar tu aplicación sin problemas. Si necesitas agregar más información o ejemplos, avísame. 😊
